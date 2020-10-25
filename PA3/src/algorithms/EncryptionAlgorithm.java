@@ -1,4 +1,4 @@
-package logic;
+package algorithms;
 
 import java.math.BigInteger;
 import java.util.Arrays;
@@ -8,7 +8,7 @@ public class EncryptionAlgorithm {
 
     //Get the p & q based on n
     public static String getPQ(int n) {
-        ArrayList<Double> results = Helper.calculatePAndQ(n);
+        ArrayList<Double> results = Calculations.calculatePAndQ(n);
 
         return "p is " + ((int) results.get(0).doubleValue()) + "\n" +
                 "q is " + ((int) results.get(1).doubleValue()) + "\n" +
@@ -17,7 +17,7 @@ public class EncryptionAlgorithm {
 
     //Get random prime number
     public static String getRandomE(int n) {
-        return Helper.generateRandomE(n);
+        return Calculations.generateRandomE(n);
     }
 
     //Generate encrypted message
@@ -42,7 +42,7 @@ public class EncryptionAlgorithm {
         } while (j < message.length());
 
         //Generate the encrypted message
-        int[] encryptedArray = Helper.calculateC(mNumber, e, Integer.parseInt(n));
+        int[] encryptedArray = Calculations.calculateC(mNumber, e, Integer.parseInt(n));
 
         return "e is: " + e + "\n" +
                 "Message after encrypting is: " + Arrays.toString(encryptedArray);

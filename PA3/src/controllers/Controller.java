@@ -3,8 +3,8 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import logic.DecryptionAlgorithm;
-import logic.EncryptionAlgorithm;
+import algorithms.DecryptionAlgorithm;
+import algorithms.EncryptionAlgorithm;
 
 public class Controller {
 

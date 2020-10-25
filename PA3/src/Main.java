@@ -9,8 +9,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("views/root.fxml"));
-        primaryStage.setTitle("Discrete mathematics pa3");
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setTitle("Discrete Mathematics PA3");
+        primaryStage.setScene(new Scene(root, 650, 450));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

@@ -1,10 +1,10 @@
-package logic;
+package algorithms;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Helper {
+public class Calculations {
 
     // Calculate a p and a q for the n that is filled in by the user.
     public static ArrayList<Double> calculatePAndQ(int n) {
@@ -35,16 +35,16 @@ public class Helper {
 
     // Method to calculate d, the private key, it is being calculated based on the n and the e.
     public static int calculateD(int n, int e) {
-        ArrayList<Double> calculation = Helper.calculatePAndQ(n);
+        ArrayList<Double> calculation = Calculations.calculatePAndQ(n);
 
         // Get values from the list.
         int p = (int) calculation.get(0).doubleValue();
         int q = (int) calculation.get(1).doubleValue();
 
         // Calculate the PHI
-        int phi = Helper.calculatePhi(p, q);
+        int phi = Calculations.calculatePhi(p, q);
 
-        return Helper.modularInverse(e, phi);
+        return Calculations.modularInverse(e, phi);
     }
 
     // This method uses p & q to define the maximum prime number e. This method then generates a prime number between the start and
