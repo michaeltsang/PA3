@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
@@ -9,39 +8,38 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
-   <children>
-      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab fx:id="Encrypt" text="Encrypt">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TextField fx:id="inputN" layoutX="14.0" layoutY="25.0" promptText="type n ..." />
-                        <TextField fx:id="inputM" layoutX="415.0" layoutY="25.0" promptText="type m ..." />
-                        <Button fx:id="encryptStep1" layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#encryptButtonStep1Clicked" prefHeight="26.0" prefWidth="169.0" text="Step 1" />
-                        <Button fx:id="encryptStep3" layoutX="417.0" layoutY="110.0" mnemonicParsing="false" onAction="#encryptButtonStep3Clicked" prefHeight="26.0" prefWidth="169.0" text="Step 3" />
-                        <Button fx:id="encryptStep2" layoutX="218.0" layoutY="110.0" mnemonicParsing="false" onAction="#encryptButtonStep2Clicked" prefHeight="26.0" prefWidth="169.0" text="Step 2" />
-                        <TextArea fx:id="encryptOutput" editable="false" layoutX="15.0" layoutY="141.0" prefHeight="212.0" prefWidth="572.0" wrapText="true" />
-                        <TextField fx:id="inputE" disable="true" layoutX="415.0" layoutY="57.0" promptText="type e ..." />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Decrypt">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TextField fx:id="decryptInputN" layoutX="14.0" layoutY="26.0" promptText="type n ..." />
-                        <TextField fx:id="decryptInputE" layoutX="14.0" layoutY="61.0" promptText="type e ..." />
-                        <Button fx:id="decryptStep1" layoutX="15.0" layoutY="95.0" mnemonicParsing="false" onAction="#decryptButtonStep1Clicked" prefHeight="26.0" prefWidth="169.0" text="Step 1" />
-                        <TextField fx:id="decryptInputC" layoutX="415.0" layoutY="61.0" promptText="type c ..." />
-                        <Button fx:id="decryptStep2" layoutX="416.0" layoutY="95.0" mnemonicParsing="false" onAction="#decryptButtonStep2Clicked" prefHeight="26.0" prefWidth="169.0" text="Step 2" />
-                        <TextArea fx:id="decryptOutput" editable="false" layoutX="15.0" layoutY="141.0" prefHeight="212.0" prefWidth="572.0" wrapText="true" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-   </children>
+    <children>
+        <TabPane prefHeight="500.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab fx:id="Encrypt" text="Encrypt">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="220.0">
+                            <children>
+                                <TextField fx:id="inputN" layoutX="18.0" layoutY="30.0" promptText="Type n:" />
+                                <TextField fx:id="inputM" layoutX="420.0" layoutY="30.0" promptText="Type m:" />
+                                <Button fx:id="encryptStep1" layoutX="20.0" layoutY="115.0" mnemonicParsing="false" onAction="#encryptButtonStep1Clicked" prefHeight="26.0" prefWidth="169.0" text="Step 1" />
+                                <Button fx:id="encryptStep2" layoutX="220.0" layoutY="115.0" mnemonicParsing="false" onAction="#encryptButtonStep2Clicked" prefHeight="26.0" prefWidth="169.0" text="Step 2" />
+                                <Button fx:id="encryptStep3" layoutX="417.0" layoutY="115.0" mnemonicParsing="false" onAction="#encryptButtonStep3Clicked" prefHeight="26.0" prefWidth="169.0" text="Step 3" />
+                                <TextArea fx:id="output" editable="false" layoutX="16.0" layoutY="142.0" prefHeight="214.0" prefWidth="574.0" wrapText="true" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Decrypt">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="220.0" prefWidth="220.0">
+                            <children>
+                                <TextField fx:id="decryptInputN" layoutX="16.0" layoutY="30.0" promptText="Type n:" />
+                                <TextField fx:id="decryptInputE" layoutX="16.0" layoutY="62.0" promptText="Type e:" />
+                                <Button fx:id="decryptStep1" layoutX="15.0" layoutY="95.0" mnemonicParsing="false" onAction="#decryptButtonStep1Clicked" prefHeight="28.0" prefWidth="170.0" text="Step 1" />
+                                <TextField fx:id="decryptInputC" layoutX="417.0" layoutY="63.0" promptText="Type c:" />
+                                <Button fx:id="decryptStep2" layoutX="416.0" layoutY="95.0" mnemonicParsing="false" onAction="#decryptButtonStep2Clicked" prefHeight="28.0" prefWidth="170.0" text="Step 2" />
+                                <TextArea fx:id="decryptOutput" editable="false" layoutX="16.0" layoutY="142.0" prefHeight="213.0" prefWidth="574.0" wrapText="true" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
 </AnchorPane>

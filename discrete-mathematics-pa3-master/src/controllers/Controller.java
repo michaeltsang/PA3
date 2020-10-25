@@ -1,11 +1,10 @@
 package controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import logic.Decrypt;
-import logic.Encrypt;
+import logic.DecryptionAlgorithm;
+import logic.EncryptionAlgorithm;
 
 public class Controller {
 
@@ -15,9 +14,9 @@ public class Controller {
     @FXML
     TextField inputM;
     @FXML
-    TextArea encryptOutput;
+    TextArea output;
 
-    /* Decrypt fields */
+    //Decrypt fields
     @FXML
     TextField decryptInputN;
     @FXML
@@ -27,80 +26,80 @@ public class Controller {
     @FXML
     TextArea decryptOutput;
 
-    /**
-     * Encrypt functionality.
-     */
+    StringBuilder e = new StringBuilder();
+
+    //Encrypt step 1
     public void encryptButtonStep1Clicked() {
+        //Get the input from n
         String inputN = this.inputN.getText();
-        // Validate if there is an input.
-        if (inputN.equals("")) return;
-        String output = Encrypt.getPQ(Integer.parseInt(inputN));
-        encryptOutput.setText(output);
+
+        //Calculate p & q
+        String output = EncryptionAlgorithm.getPQ(Integer.parseInt(inputN));
+
+        //Set the output
+        this.output.setText(output);
     }
 
-    /**
-     * Encrypt functionality.
-     */
+    //Encrypt step 2
     public void encryptButtonStep2Clicked() {
+        //Get the input from n
         String inputN = this.inputN.getText();
 
-        // Validate if there is an input.
-        if (inputN.equals("")) return;
+        //Generate e
+        e.append("e is: ");
+        e.append(EncryptionAlgorithm.getRandomE(Integer.parseInt(inputN)));
 
-        StringBuilder e = new StringBuilder();
-
-            e.append("e is: ");
-            e.append(Encrypt.getRandomE(Integer.parseInt(inputN)));
-
-        encryptOutput.setText(e.toString());
+        //Put it in the output
+        output.setText(e.toString());
     }
 
+    //Getter for e
+    public StringBuilder getE() {
+        return e;
+    }
+
+    //Encrypt step 3
     public void encryptButtonStep3Clicked() {
+        //Get the n & m
         String inputN = this.inputN.getText();
         String inputM = this.inputM.getText();
 
-        if (inputN.equals("") || inputM.equals("")) return;
-        int userE;
-                userE = 0;
+        //Get the value of e from step 2
+        int outputE = Integer.parseInt(getE().delete(0,6).toString());
 
-        String output = Encrypt.getC(inputN, inputM, userE);
+        //Generate c
+        String output = EncryptionAlgorithm.generateC(inputN, inputM, outputE);
 
-        encryptOutput.setText(output);
+        //Set the output
+        this.output.setText(output);
     }
 
-    /**
-     * Decrypt functionality.
-     */
+    //Decrypt step 1
     public void decryptButtonStep1Clicked() {
+        //Get the input from n & e
         String inputN = decryptInputN.getText();
         String inputE = decryptInputE.getText();
 
-        // Validate if there is an input.
-        if (inputN.equals("") || inputE.equals("")) return;
+        //Generate D
+        String output = DecryptionAlgorithm.generateD(Integer.parseInt(inputN), Integer.parseInt(inputE));
 
-        String output = Decrypt.getD(Integer.parseInt(inputN), Integer.parseInt(inputE));
+        //Set the text
         decryptOutput.setText(output);
     }
 
-    /**
-     * Decrypt functionality.
-     */
+    //Decrypt step 2
     public void decryptButtonStep2Clicked() {
+        //Get the input from n & e & c
         String inputN = decryptInputN.getText();
         String inputE = decryptInputE.getText();
         String inputC = decryptInputC.getText();
 
-        if (inputN.equals("") || inputE.equals("") || inputC.equals("")) return;
+        //Generate m
+        String output = DecryptionAlgorithm.generateM(Integer.parseInt(inputN), Integer.parseInt(inputE), inputC);
 
-        String output = Decrypt.getM(Integer.parseInt(inputN), Integer.parseInt(inputE), inputC);
-
+        //Set the output
         decryptOutput.setText(output);
     }
-
-    /**
-     * onaction event for enabling e field for userE
-     */
-
-    }
+}
 
 
