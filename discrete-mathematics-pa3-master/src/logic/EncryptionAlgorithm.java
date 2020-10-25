@@ -8,7 +8,7 @@ public class EncryptionAlgorithm {
 
     //Get the p & q based on n
     public static String getPQ(int n) {
-        ArrayList<Double> results = Helper.calculatePQ(n);
+        ArrayList<Double> results = Helper.calculatePAndQ(n);
 
         return "p is " + ((int) results.get(0).doubleValue()) + "\n" +
                 "q is " + ((int) results.get(1).doubleValue()) + "\n" +
@@ -17,7 +17,7 @@ public class EncryptionAlgorithm {
 
     //Get random prime number
     public static String getRandomE(int n) {
-        return Helper.getRandomE(n);
+        return Helper.generateRandomE(n);
     }
 
     //Generate encrypted message
@@ -26,16 +26,20 @@ public class EncryptionAlgorithm {
         int[] mNumberInt = new int[message.length()];
 
         //For loop to parse character to int
-        for (int m = 0; m < message.length(); m++) {
+        int m = 0;
+        do {
             mNumberInt[m] = characters[m];
-        }
+            m++;
+        } while (m < message.length());
 
         BigInteger mNumber[] = new BigInteger[message.length()];
 
         //For loop for the message numbers
-        for (int j = 0; j < message.length(); j++){
+        int j = 0;
+        do {
             mNumber[j] = BigInteger.valueOf(mNumberInt[j]);
-        }
+            j++;
+        } while (j < message.length());
 
         //Generate the encrypted message
         int[] encryptedArray = Helper.calculateC(mNumber, e, Integer.parseInt(n));
