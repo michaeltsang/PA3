@@ -33,7 +33,7 @@ public class Helper {
         return results;
     }
 
-    //Method to calculate d, the private key, it is being calculated based on the n and the e.
+    // Method to calculate d, the private key, it is being calculated based on the n and the e.
     public static int calculateD(int n, int e) {
         ArrayList<Double> calculation = Helper.calculatePAndQ(n);
 
@@ -47,7 +47,7 @@ public class Helper {
         return Helper.modularInverse(e, phi);
     }
 
-    // This function uses p & q to define the maximum prime number e. The output is a prime number between start and
+    // This method uses p & q to define the maximum prime number e. This method then generates a prime number between the start and
     // the maximum prime.
     public static String generateRandomE(int n){
         int primeNumber;
@@ -59,7 +59,7 @@ public class Helper {
         return Integer.toString(primeNumber);
     }
 
-    // This function generates a list of prime numbers. It generates them up to the given MAX number.
+    // This method generates a list of prime numbers. It generates them up to the given MAX number.
     public static ArrayList<Integer> generatePrimeNumbers(int MAX) {
         ArrayList<Integer> primeNumberList = new ArrayList<Integer>();
 
