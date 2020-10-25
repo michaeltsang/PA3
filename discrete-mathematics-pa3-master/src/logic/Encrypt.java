@@ -37,7 +37,7 @@ public class Encrypt {
     }
 
     public static Boolean verifyE(String n, String e){
-        ArrayList<Integer>  results = Helper.generatePrimeNumbers(Integer.parseInt(n));
+        ArrayList<Integer> results = Helper.generatePrimeNumbers(Integer.parseInt(n));
         if (results.contains(Integer.parseInt(e))) {
             return true;
         }else{
