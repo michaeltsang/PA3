@@ -13,7 +13,7 @@ public class DecryptionAlgorithm {
      * @param e - The public key.
      * @return returns the d.
      */
-    public static String getD(int n, int e) {
+    public static String generateD(int n, int e) {
         int d = Helper.calculateD(n, e);
         return "d is " + d;
     }
@@ -26,7 +26,7 @@ public class DecryptionAlgorithm {
      * @param decryptedMessage - The decrypted message.
      * @return an array of all the unicode integers.
      */
-    public static String getM(int n, int e, String decryptedMessage){
+    public static String generateM(int n, int e, String decryptedMessage){
         int d = Helper.calculateD(n, e);
 
         String[] result = decryptedMessage.split("\\s*,\\s*");

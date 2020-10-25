@@ -51,7 +51,7 @@ public class EncryptionAlgorithm {
      * @param message message to encrypt
      * @return the encrypted message
      */
-    public static String getC(String n, String message, int userE){
+    public static String generateC(String n, String message, int userE){
         //Check if user submitted his own e
         int e;
         if (verifyE(n, Integer.toString(userE))){
