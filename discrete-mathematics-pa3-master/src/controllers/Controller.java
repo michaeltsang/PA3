@@ -4,9 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import logic.Decrypt;
-import logic.Encrypt;
-import logic.Helper;
+import logic.DecryptionAlgorithm;
+import logic.EncryptionAlgorithm;
 
 public class Controller {
 
@@ -46,7 +45,7 @@ public class Controller {
         // Validate if there is an input.
         if (inputN.equals("")) return;
 
-        String output = Encrypt.getPQ(Integer.parseInt(inputN));
+        String output = EncryptionAlgorithm.getPQ(Integer.parseInt(inputN));
 
         encryptOutput.setText(output);
     }
@@ -65,11 +64,11 @@ public class Controller {
         if (checkBoxMultipleE.isSelected()){
             e.append("e's are: ");
             for (int i = 0; i < 5; i++){
-                e.append(Encrypt.getRandomE(Integer.parseInt(inputN))).append(", ");
+                e.append(EncryptionAlgorithm.getRandomE(Integer.parseInt(inputN))).append(", ");
             }
         }else{
             e.append("e is: ");
-            e.append(Encrypt.getRandomE(Integer.parseInt(inputN)));
+            e.append(EncryptionAlgorithm.getRandomE(Integer.parseInt(inputN)));
         }
 
         encryptOutput.setText(e.toString());
@@ -83,7 +82,7 @@ public class Controller {
 
         int userE;
         if (!encryptInputE.equals("") && checkBoxUserE.isSelected()){
-            if (Encrypt.verifyE(inputN, encryptInputE.getText())){
+            if (EncryptionAlgorithm.verifyE(inputN, encryptInputE.getText())){
                 userE = Integer.parseInt(encryptInputE.getText());
                 encryptInputE.setStyle(cssDefault);
             }else{
@@ -94,7 +93,7 @@ public class Controller {
             userE = 0;
         }
 
-        String output = Encrypt.getC(inputN, inputM, userE);
+        String output = EncryptionAlgorithm.getC(inputN, inputM, userE);
 
         encryptOutput.setText(output);
     }
@@ -109,7 +108,7 @@ public class Controller {
         // Validate if there is an input.
         if (inputN.equals("") || inputE.equals("")) return;
 
-        String output = Decrypt.getD(Integer.parseInt(inputN), Integer.parseInt(inputE));
+        String output = DecryptionAlgorithm.getD(Integer.parseInt(inputN), Integer.parseInt(inputE));
         decryptOutput.setText(output);
     }
 
@@ -123,7 +122,7 @@ public class Controller {
 
         if (inputN.equals("") || inputE.equals("") || inputC.equals("")) return;
 
-        String output = Decrypt.getM(Integer.parseInt(inputN), Integer.parseInt(inputE), inputC);
+        String output = DecryptionAlgorithm.getM(Integer.parseInt(inputN), Integer.parseInt(inputE), inputC);
 
         decryptOutput.setText(output);
     }

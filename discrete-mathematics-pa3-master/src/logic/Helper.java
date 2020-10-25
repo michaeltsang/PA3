@@ -16,19 +16,19 @@ public class Helper {
         double startTime = System.currentTimeMillis();
 
         ArrayList<Double> results = new ArrayList<Double>();
-        ArrayList<Integer> primes = generatePrimeNumbers(n);
+        ArrayList<Integer> primeNumbers = generatePrimeNumbers(n);
 
-        for (int i = 0; i <= primes.size() - 1; i++) {
-            for (int j = 0; j <= primes.size() - 1; j++) {
-                int product = primes.get(i) * primes.get(j);
+        for (int i = 0; i <= primeNumbers.size() - 1; i++) {
+            for (int j = 0; j <= primeNumbers.size() - 1; j++) {
+                int product = primeNumbers.get(i) * primeNumbers.get(j);
 
                 // Go out the loop when the product is greater than n, since this isn't possible anymore.
                 if (product > n) break;
 
                 // Return the results when a correct product is found.
                 if (product == n) {
-                    results.add((double) primes.get(i));
-                    results.add((double) primes.get(j));
+                    results.add((double) primeNumbers.get(i));
+                    results.add((double) primeNumbers.get(j));
 
                     double endTime = System.currentTimeMillis();
                     results.add((endTime - startTime));
@@ -65,33 +65,32 @@ public class Helper {
      * @return primeNumber converted to String
      */
     public static String getRandomE(int n){
-
         int primeNumber;
-        ArrayList<Integer> primeList = generatePrimeNumbers(n);
+        ArrayList<Integer> primeNumberList = generatePrimeNumbers(n);
 
         Random rand = new Random();
-        primeNumber = primeList.get(rand.nextInt(primeList.size()));
+        primeNumber = primeNumberList.get(rand.nextInt(primeNumberList.size()));
         return Integer.toString(primeNumber);
     }
 
     /**
-     * This function generates a list of prime numbers. It generates them till the given number.
+     * This function generates a list of prime numbers. It generates them up to the given MAX number.
      *
-     * @param till - The max number to generate prime numbers to.
+     * @param MAX - The max number to generate prime numbers to.
      * @return a list of prime numbers.
      */
-    public static ArrayList<Integer> generatePrimeNumbers(int till) {
-        ArrayList<Integer> primes = new ArrayList<Integer>();
+    public static ArrayList<Integer> generatePrimeNumbers(int MAX) {
+        ArrayList<Integer> primeNumberList = new ArrayList<Integer>();
 
-        // This loop generates prime numbers till the till parameter.
-        for (int i = 2; i <= till; i++) {
+        // Generate a loop with prime numbers up to the MAX number.
+        for (int i = 2; i <= MAX; i++) {
             int c = 0;
             for (int j = 1; j <= i; j++) {
                 if (i % j == 0) c++;
             }
-            if (c == 2) primes.add(i);
+            if (c == 2) primeNumberList.add(i);
         }
-        return primes;
+        return primeNumberList;
     }
 
     public static int[] calculateC(BigInteger[] c, int e, int n) {

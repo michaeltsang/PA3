@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.ArrayList;
 
-public class Encrypt {
+public class EncryptionAlgorithm {
 
     /**
      * This function get the result of p and q, if not p and q can be found show an error message.

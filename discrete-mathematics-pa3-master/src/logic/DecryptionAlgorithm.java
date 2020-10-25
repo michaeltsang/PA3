@@ -2,12 +2,13 @@ package logic;
 
 import java.math.BigInteger;
 
-public class Decrypt {
+public class DecryptionAlgorithm {
 
-    /**
-     * This function retrieves the d from the n and e values. It does so by calculating the phi and modular inverse of
-     * e and phi.
-     *
+
+     // This function retrieves the d from the n and e values. It does so by calculating the phi and modular inverse of
+     // e and phi.
+
+     /**
      * @param n - The product of p & q.
      * @param e - The public key.
      * @return returns the d.
@@ -40,7 +41,7 @@ public class Decrypt {
         int[] m = Helper.calculateM(c,d, n);
         char[] mChars = new char[m.length];
 
-        // Parse int to character.
+        // Parse the integer to a character.
         for (int i = 0; i < m.length; i++) {
             mChars[i] = Character.toChars(m[i])[0];
         }
