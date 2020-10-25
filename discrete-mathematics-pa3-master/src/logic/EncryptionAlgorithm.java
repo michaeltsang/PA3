@@ -32,7 +32,7 @@ public class EncryptionAlgorithm {
             m++;
         } while (m < message.length());
 
-        BigInteger mNumber[] = new BigInteger[message.length()];
+        BigInteger[] mNumber = new BigInteger[message.length()];
 
         //For loop for the message numbers
         int j = 0;
